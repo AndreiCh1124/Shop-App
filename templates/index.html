@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+        <link
+            rel="shortcut icon"
+            href="{{ url_for('static', filename='assets/favicon.png') }}"
+        />
+        <title>Home</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Online Shop</h1>
+            <div class="item-showcase" id="shopItems">
+                <!-- To be filled in by JavaScript by requesting the inventory from Flask. -->
+            </div>
+
+            <form id="form" class="contact" action="/shop" method="post">
+                <p>
+                    <label>Shopping List:</label>
+                    <input type="text" name="shoppingList" id="shoppingList" />
+                    <input class="sendBtn" type="submit" value="Send" />
+                </p>
+            </form>
+
+            <div class="modal" id="confirmationModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close" id="closeButton">&times;</span>
+                        <h3>Thank you for choosing us!</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h3>We'll get back to you soon!</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <h3 id="shopTimeResult">
+                            <!-- To be filled in by JavaScript by processing the request with Flask. -->
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</html>
