@@ -4,10 +4,10 @@ from random import choice, randint
 app = Flask(__name__)
 
 inventory_mixed = list()
-inventory_general = ["Milk", "Orange juice", "Water", "Limonade", "Coffe"]
+inventory_general = ["Milk", "Orange_juice", "Water", "Lemonade", "Coffee"]
 inventory_food = ["Bread", "Beef", "Apples", "Oats", "Pork"]
 inventory_alcohol = ["Beer", "Whiskey", "Wine", "Vodka", "Champagne"]
-inventory_vegetables = ["Carrot", "Tomato", "Horseradish", "Ginger", "Garlic"]
+inventory_vegetables = ["Carrot", "Tomato", "Horseraddish", "Ginger", "Garlic"]
 
 def pick_items(inv_list, inventory_mixed):
     pick = choice(inv_list)
@@ -16,7 +16,7 @@ def pick_items(inv_list, inventory_mixed):
     inventory_mixed.append(pick)
     return inventory_mixed
 
-for idx in range(randint(2, 3)):
+for idx in range(3):
     pick_items(inventory_general, inventory_mixed)
     pick_items(inventory_alcohol, inventory_mixed)
     pick_items(inventory_food, inventory_mixed)

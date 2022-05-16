@@ -4,19 +4,31 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
         <title>Items</title>
     </head>
     <body>
-        {% if items is defined %}
-        <p>Here is a list of all our available items:</p>
-        <ul>
-            {% for item in items %}
-            <li>{{item}}</li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <h1>Sorry!</h1>
-        <p>No items for sale today.</p>
-        {% endif %}
+        <div class="items-container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="items-title">Available Items</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for item in items %}
+                <div
+                    class="col-lg-4 col-md-4 col-sm-4 col-sm-12 col-xs-12 text-center"
+                >
+                    <div class="card">
+                        <h3>{{item}}</h3>
+                        <img src="/static/assets/{{item}}.jpg" alt="{{item}}" />
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </body>
 </html>
