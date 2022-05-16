@@ -38,10 +38,22 @@ def inventory_items():
 
 @app.route("/shop", methods=["POST"])
 def shop():
+    invalid_items = list()
     shopping_list = request.form["shoppingList"]
     shopping_list = shopping_list.split(", ")
-    waiting_time = f"Great choice, you will have to wait {len(shopping_list)} minutes for your product."
-    return jsonify({"time": waiting_time})
+    if str(shopping_list[0]) == "":
+        message_text = "Please insert an item !!!"
+        return jsonify({"time": message_text})
+    for item in shopping_list:
+        if str(item).capitalize() not in inventory_mixed:
+            invalid_items.append(item)
+    if len(invalid_items) != 0:
+        items = ", ".join(invalid_items)
+        message_text = f"The following items are not avalibale: {items}"
+        return jsonify({"time": message_text})
+    else:
+        message_text = f"Great choice, you will have to wait {len(shopping_list)} minutes for your product."
+        return jsonify({"time": message_text})
 
 @app.route("/echo-page", methods=["POST"])
 def echo_page():
