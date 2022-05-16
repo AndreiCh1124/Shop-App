@@ -14,14 +14,32 @@
         <div class="items-container">
             <div class="row">
                 <div class="col">
-                    <h2 class="items-title">Available Items</h2>
+                    <h1 class="items-title">Available Items</h1>
                 </div>
             </div>
             <div class="row">
-                {% for item in items %}
-                <div
-                    class="col-lg-4 col-md-4 col-sm-4 col-sm-12 col-xs-12 text-center"
-                >
+                {% for item in items1 %}
+                <div class="col">
+                    <div class="card">
+                        <h3>{{item}}</h3>
+                        <img src="/static/assets/{{item}}.jpg" alt="{{item}}" />
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for item in items2 %}
+                <div class="col">
+                    <div class="card">
+                        <h3>{{item}}</h3>
+                        <img src="/static/assets/{{item}}.jpg" alt="{{item}}" />
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for item in items3 %}
+                <div class="col">
                     <div class="card">
                         <h3>{{item}}</h3>
                         <img src="/static/assets/{{item}}.jpg" alt="{{item}}" />

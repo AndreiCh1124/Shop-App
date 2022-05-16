@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify, render_template
-from random import choice, randint
+from random import choice
 
 app = Flask(__name__)
 
 inventory_mixed = list()
-inventory_general = ["Milk", "Orange_juice", "Water", "Lemonade", "Coffee"]
+inventory_general = ["Milk", "Orange juice", "Water", "Lemonade", "Coffee"]
 inventory_food = ["Bread", "Beef", "Apples", "Oats", "Pork"]
 inventory_alcohol = ["Beer", "Whiskey", "Wine", "Vodka", "Champagne"]
 inventory_vegetables = ["Carrot", "Tomato", "Horseraddish", "Ginger", "Garlic"]
@@ -23,7 +23,9 @@ for idx in range(3):
     pick_items(inventory_vegetables, inventory_mixed)
 
 inventory = {
-    "items": inventory_mixed
+    "items1": [inventory_mixed[0], inventory_mixed[1], inventory_mixed[2], inventory_mixed[3]],
+    "items2": [inventory_mixed[4], inventory_mixed[5], inventory_mixed[6], inventory_mixed[7]],
+    "items3": [inventory_mixed[8], inventory_mixed[9], inventory_mixed[10], inventory_mixed[11]]
 }
 
 @app.route("/")
@@ -33,7 +35,9 @@ def home():
 
 @app.route("/inventory")
 def inventory_items():
-    return jsonify({"items": f"Here is a list of all the available products: {', '.join(inventory['items'])}."})
+    return jsonify({"items": f"Here is a list of all the available products: {', '.join(inventory['items1'])}, \
+        {', '.join(inventory['items2'])}, {', '.join(inventory['items3'])}."})
+            
 
 
 @app.route("/shop", methods=["POST"])
@@ -68,11 +72,12 @@ def echo():
 
 @app.route("/items")
 def items():
-    response = inventory["items"]
+    response = inventory["items1"] + inventory["items2"] + inventory["items3"]
+    print(response)
     if response is None:
         return render_template("items.html")
     else:
-        return render_template("items.html", items=response)
+        return render_template("items.html", items1=response[0:4], items2=response[4:8], items3=response[8:12])
 
 
 @app.route("/math", methods=["POST"])

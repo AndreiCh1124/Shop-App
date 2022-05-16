@@ -6,15 +6,15 @@ ul {
 }
 
 .items-container {
-    width: 120rem;
+    max-width: 100%;
+    width: 100%;
     padding: 0 1.5rem;
     margin: 0 auto;
 }
 
 .row {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: nowrap;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
 }
@@ -30,28 +30,21 @@ ul {
 }
 
 .card {
-    display: inline-block;
+    display: block;
     border: 15px solid #8f6051;
+    width: 15vw;
+    height: 24vh;
     padding: 2rem 1rem 3px;
     border-radius: 5px;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     background-color: #8f6051;
     text-align: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 
-.card ul {
-    display: flex;
-}
-
-.card li {
-    flex: 1;
-    font-size: 1.6rem;
-}
-
 .card img {
-    margin-bottom: 30px;
-    max-width: 150px;
+    width: 77%;
+    height: 77%;
 }
 
 .container {
