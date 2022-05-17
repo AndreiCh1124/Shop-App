@@ -16,7 +16,7 @@ def pick_items(inv_list, inventory_mixed):
     inventory_mixed.append(pick)
     return inventory_mixed
 
-for idx in range(3):
+for idx in range(2):
     pick_items(inventory_general, inventory_mixed)
     pick_items(inventory_alcohol, inventory_mixed)
     pick_items(inventory_food, inventory_mixed)
@@ -25,7 +25,6 @@ for idx in range(3):
 inventory = {
     "items1": [inventory_mixed[0], inventory_mixed[1], inventory_mixed[2], inventory_mixed[3]],
     "items2": [inventory_mixed[4], inventory_mixed[5], inventory_mixed[6], inventory_mixed[7]],
-    "items3": [inventory_mixed[8], inventory_mixed[9], inventory_mixed[10], inventory_mixed[11]]
 }
 
 @app.route("/")
@@ -36,7 +35,7 @@ def home():
 @app.route("/inventory")
 def inventory_items():
     return jsonify({"items": f"Here is a list of all the available products: {', '.join(inventory['items1'])}, \
-        {', '.join(inventory['items2'])}, {', '.join(inventory['items3'])}."})
+        {', '.join(inventory['items2'])}."})
             
 
 
@@ -72,12 +71,12 @@ def echo():
 
 @app.route("/items")
 def items():
-    response = inventory["items1"] + inventory["items2"] + inventory["items3"]
+    response = inventory["items1"] + inventory["items2"]
     print(response)
     if response is None:
         return render_template("items.html")
     else:
-        return render_template("items.html", items1=response[0:4], items2=response[4:8], items3=response[8:12])
+        return render_template("items.html", items1=response[0:4], items2=response[4:8])
 
 
 @app.route("/math", methods=["POST"])

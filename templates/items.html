@@ -13,36 +13,26 @@
     <body>
         <div class="items-container">
             <div class="row">
-                <div class="col">
+                <div class="col-12 col-t-6 col-m-12">
                     <h1 class="items-title">Available Items</h1>
                 </div>
             </div>
             <div class="row">
                 {% for item in items1 %}
-                <div class="col">
+                <div class="col-3 col-t-6 col-m-12">
                     <div class="card">
-                        <h3>{{item}}</h3>
                         <img src="/static/assets/{{item}}.jpg" alt="{{item}}" />
+                        <h3>{{item}}</h3>
                     </div>
                 </div>
                 {% endfor %}
             </div>
             <div class="row">
                 {% for item in items2 %}
-                <div class="col">
+                <div class="col-3 col-t-6 col-m-12">
                     <div class="card">
-                        <h3>{{item}}</h3>
                         <img src="/static/assets/{{item}}.jpg" alt="{{item}}" />
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="row">
-                {% for item in items3 %}
-                <div class="col">
-                    <div class="card">
                         <h3>{{item}}</h3>
-                        <img src="/static/assets/{{item}}.jpg" alt="{{item}}" />
                     </div>
                 </div>
                 {% endfor %}
